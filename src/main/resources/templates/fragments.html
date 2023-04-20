@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<!-- Fragment #1 : Headerfiles contains css and js references -->
+<head th:fragment="headerfiles">
+<meta charset="ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Book-Shop</title>
+<link th:href="@{~/bootstrap.min.css}" rel="stylesheet">
+<link th:href="@{~/fontawesome/css/all.css}" rel="stylesheet">
+<style type="text/css">
+        @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@200&display=swap');
+        body{
+          font-family: 'Sarabun', sans-serif;
+        }
+        h1{
+          color: #4169E1;
+        }
+        .bg-gradient-primary {
+            background-color: #5478E4;
+            background-image: linear-gradient(180deg, #5478E4 10%, #4169E1 100%);
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+
+	<!-- Fragment #2 : Navbar contains nav links -->
+	<div th:fragment="nav">
+		<nav class="navbar navbar-expand-lg bg-gradient-primary" style="padding:20px;">
+			<div class="container">
+			<a class="navbar-brand" href="#" style="color: white;">Book Shop</a>
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent" style="color: white;">
+				<ul class="navbar-nav mr-auto" style="color: white;" >
+					<li class="nav-item"><a class="nav-link" href="#"
+						th:href="@{/index}" style="color: white;"><i class="fa fa-home mr-2"></i>Home</a></li>
+					<li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item"><a
+						class="nav-link" href="#" th:href="@{/admin/index}" style="color: white;">Admin</a></li>
+					<li sec:authorize="hasAnyRole('ROLE_MANAGER','ROLE_ADMIN')"
+						class="nav-item"><a class="nav-link" href="#"
+						th:href="@{/manager/index}" style="color: white;">Management</a></li>
+				</ul>
+				<ul class="nav my-auto mr-4">
+					<li class="nav-item"><a href="#" class="text-info" th:href="@{/profile/cart-product}"><i class="fas fa-shopping-cart" style="color: white;"></i></a></li>
+				</ul>
+				<form class="form-inline my-2 my-lg-0" form-method="post"
+					th:action="@{/logout}" >
+					<button sec:authorize="isAuthenticated()"
+						class="btn btn-light" type="submit">Logout</button>
+					<button sec:authorize="isAnonymous()" th:href="@{~/login}"
+						class="btn btn-light" type="submit">Login</button>
+				</form>
+			</div>
+			</div>
+		</nav>
+	</div>
+	
+	<!--footer-->
+		<div th:fragment="footer">
+		   <footer class="sticky-footer mt-5 bg-gradient-primary" style="padding:50px;">
+             <div class="container my-auto">
+                    <div class="copyright text-center my-auto" style="color: white;">
+                        <span><i class="fa fa-copyright" aria-hidden="true"></i> Book Shop Online </span>
+                    </div>
+             </div>
+          </footer>
+	  </div>
+	
+
+</body>
+</html>

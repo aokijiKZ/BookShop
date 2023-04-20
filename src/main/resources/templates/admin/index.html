@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<head th:insert="fragments.html :: headerfiles">
+</head>
+<body>
+	<header th:insert="fragments.html :: nav"></header>
+	<div class="container">
+		<h1 class="display-4 my-2">Admin Dashboard</h1>
+		<hr>
+		
+		<div class="row">
+          <div class="col-4">
+             <div class="list-group" id="list-tab" role="tablist">
+             <a class="list-group-item list-group-item-action"  data-toggle="list" href="#" th:href="@{/manager/category-form}" role="tab" aria-controls="Manage Category">Manage Category</a>
+             <a class="list-group-item list-group-item-action"  data-toggle="list" href="#" th:href="@{/manager/product-form}" role="tab" aria-controls="Manage Product">Manage Product</a>
+             <a class="list-group-item list-group-item-action"  data-toggle="list" href="#" th:href="@{/admin/add-user}" role="tab" aria-controls="Add Admin/Manager">Add Admin/Manager/User</a>
+             <a class="list-group-item list-group-item-action"  data-toggle="list" href="#" th:href="@{/admin/user-list}" role="tab" aria-controls="settings">User/Manager/Admin List</a>
+         </div>
+       </div>
+	   </div>
+	   </div>   
+	
+	
+</body>
+</html>
